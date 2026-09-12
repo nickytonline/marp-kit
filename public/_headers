@@ -1,0 +1,6 @@
+# Serve the short download URLs as attachments, so the direct file URLs can
+# still preview inline in the browser.
+/pdf
+  Content-Disposition: attachment; filename="slides.pdf"
+/powerpoint
+  Content-Disposition: attachment; filename="slides.pptx"

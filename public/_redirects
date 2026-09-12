@@ -1,0 +1,5 @@
+# Short download URLs for the exported deck.
+# Keep these in public/ (copied into dist) rather than netlify.toml —
+# [[redirects]] there is resolved at build time and never applied at the edge.
+/pdf         /slides.pdf    200!
+/powerpoint  /slides.pptx   200!

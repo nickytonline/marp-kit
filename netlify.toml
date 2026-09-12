@@ -1,0 +1,12 @@
+[build]
+  # The build image has no browser, so build:ci fetches one for the PDF/PPTX
+  # export. It lands in node_modules/.cache, which Netlify caches.
+  command = "npm run build:ci"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Routing lives in public/_redirects and public/_headers, which the build copies
+# into dist. The equivalent [[redirects]] and [[headers]] tables here were
+# resolved at build time but never applied at the edge.
