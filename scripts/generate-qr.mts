@@ -33,6 +33,12 @@ async function main() {
     if (!name || !url) {
       throw new Error('Each QR code config entry must include both name and url.');
     }
+
+    try {
+      new URL(url);
+    } catch {
+      throw new Error(`Invalid URL for QR code "${name}": ${url}`);
+    }
   }
 
   const absoluteOutputDir = path.join(rootDir, outputDir);
