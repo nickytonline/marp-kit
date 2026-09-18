@@ -29,14 +29,16 @@ async function main() {
     process.exit(0);
   }
 
+  for (const { name, url } of codes) {
+    if (!name || !url) {
+      throw new Error('Each QR code config entry must include both name and url.');
+    }
+  }
+
   const absoluteOutputDir = path.join(rootDir, outputDir);
   fs.mkdirSync(absoluteOutputDir, { recursive: true });
 
   await Promise.all(codes.map(({ name, url }) => {
-    if (!name || !url) {
-      throw new Error('Each QR code config entry must include both name and url.');
-    }
-
     const outputPath = path.join(absoluteOutputDir, `qr-${name}.png`);
     return QRCode.toFile(outputPath, url, {
       width: 640,
