@@ -14,6 +14,7 @@ Custom themes: see `themes/README.md`.
 
 - Slide copy, notes, claims, titles: `.agents/skills/speaker-ai-guidance/SKILL.md`
 - Images, QR, alt text, contrast, density, how visuals are described: `.agents/skills/accessible-presentations/SKILL.md`
+- QR code generation and config workflow: `.agents/skills/qr-codes/SKILL.md`
 
 Both can apply to the same edit. Voice wins over linter-style rewrites.
 
