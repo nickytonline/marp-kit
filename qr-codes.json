@@ -1,9 +1,4 @@
 {
   "outputDir": "images",
-  "codes": [
-    {
-      "name": "slides",
-      "url": "https://example.com"
-    }
-  ]
+  "codes": []
 }

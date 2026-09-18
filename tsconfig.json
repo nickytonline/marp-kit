@@ -15,6 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node"]
   },
-  "include": ["scripts/**/*.ts", "qr-codes.json"],
+  "include": ["scripts/**/*.mts", "qr-codes.json"],
   "exclude": ["node_modules", "dist"]
 }

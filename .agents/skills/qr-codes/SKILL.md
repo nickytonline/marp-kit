@@ -5,7 +5,7 @@ Use the QR code generator when a talk needs a closing slide with a scannable lin
 ## Where it lives
 
 - `qr-codes.json` — deck-specific QR targets
-- `scripts/generate-qr.ts` — generator script
+- `scripts/generate-qr.mts` — generator script
 - `npm run generate:qr` — generates the images
 
 ## Config shape

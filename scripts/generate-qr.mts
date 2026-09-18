@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import QRCode from 'qrcode';
 
 type QRCodeConfig = {
@@ -8,7 +9,7 @@ type QRCodeConfig = {
 };
 
 async function main() {
-  const rootDir = path.resolve(__dirname, '..');
+  const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const configPath = path.join(rootDir, 'qr-codes.json');
 
   let config: QRCodeConfig;
@@ -24,7 +25,7 @@ async function main() {
   const codes = Array.isArray(config.codes) ? config.codes : [];
 
   if (codes.length === 0) {
-    console.warn('No QR codes configured; skipping generation.');
+    console.warn('No QR codes to generate.');
     process.exit(0);
   }
 
@@ -36,11 +37,12 @@ async function main() {
       throw new Error('Each QR code config entry must include both name and url.');
     }
 
-    return QRCode.toFile(path.join(absoluteOutputDir, `qr-${name}.png`), url, {
+    const outputPath = path.join(absoluteOutputDir, `qr-${name}.png`);
+    return QRCode.toFile(outputPath, url, {
       width: 640,
       margin: 4,
       errorCorrectionLevel: 'M',
-    });
+    }).then(() => console.log(`Generated ${path.relative(rootDir, outputPath)}`));
   })).catch((error: unknown) => {
     console.error(error);
     process.exitCode = 1;
