@@ -35,6 +35,28 @@ npm run build:ci    # same, after installing Chrome (for hosts with no browser)
 
 Present from the HTML. GIFs freeze on frame one in PDF. Speaker notes stay in Markdown and the HTML presenter view; the PPTX build strips them so a download is not a notes leak.
 
+## QR codes
+
+Add QR code targets in `qr-codes.json` and generate images with:
+
+```bash
+npm run generate:qr
+```
+
+Example:
+
+```json
+{
+  "outputDir": "images",
+  "codes": [
+    { "name": "slides", "url": "https://example.com" },
+    { "name": "github", "url": "https://github.com" }
+  ]
+}
+```
+
+If `codes` is empty, the script warns and exits without generating any QR images.
+
 ## Deploy
 
 I ship talks on [Netlify](https://www.netlify.com/), so this repo includes that setup:
