@@ -12,13 +12,15 @@
     "build:ci": "CHROME_PATH=$(npm run --silent browser:install | tail -1 | cut -d' ' -f2-) npm run build",
     "browser:install": "browsers install chrome@stable --path \"$PWD/node_modules/.cache/puppeteer\"",
     "dev": "marp -w -s --html .",
-    "generate:qr": "node scripts/generate-qr.cjs"
+    "generate:qr": "tsx scripts/generate-qr.ts"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^4.5.0",
     "@puppeteer/browsers": "^3.2.2",
     "jszip": "^3.10.2",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.2"
   },
   "devEngines": {
     "packageManager": {
